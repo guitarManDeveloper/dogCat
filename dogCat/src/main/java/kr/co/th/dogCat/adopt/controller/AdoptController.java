@@ -23,7 +23,7 @@ public class AdoptController {
 		//상품목록조회
 		List<AdoptVO> adoptList =  adoptService.adoptList(adoptVO);
 		model.addAttribute("adoptList",adoptList);
-		
+		    
 		return "dogCat/adopt/adoptList";
 	}
 	
