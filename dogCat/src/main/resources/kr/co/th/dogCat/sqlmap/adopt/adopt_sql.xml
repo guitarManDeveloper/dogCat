@@ -1,0 +1,28 @@
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adopt">
+	<resultMap id="adoptVOMap" type="kr.co.th.dogCat.adopt.vo.AdoptVO">
+		<id property="id" column="id"/>
+		<id property="category" column="category"/>
+		<id property="subject" column="subject"/>
+		<id property="writer" column="writer"/>
+		<id property="hit" column="hit"/>
+		<id property="rdate" column="rdate"/>
+		<id property="mdate" column="mdate"/>
+	</resultMap>
+
+
+	<select id='adoptList' parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultMap="adoptVOMap">
+		select * from adopt
+		<if test='subject != null &amp;&amp;  !subject.equals("")'>
+			WHERE subject LIKE CONCAT('%', #{subject}, '%')
+		</if>
+		ORDER BY id DESC
+		limit #{offset}, #{pageSize}
+	</select>
+
+
+
+</mapper>    
