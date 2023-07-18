@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class SnsLoginController {
@@ -29,7 +27,7 @@ public class SnsLoginController {
         snsLoginService.getKakaoUserInfo(token,request);
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:/selectItemList");
+        mv.setViewName("redirect:/");
         return mv;
     }
 }
