@@ -43,10 +43,10 @@
 <div class='container'>
     <h2 class="text-center">멍멍냐옹 목록 게시판</h2>
     <br/>
-    <form action="./selectItemList" method="get">
+    <form action="./adoptList" method="get">
         <div class="input-group" style="float:right; width: 400px; margin-bottom: 15px;">
-            <input type="hidden" value="${itemVO.viewType}" name="viewType"/>
-            <input type="search" name="itemName" class="form-control rounded" placeholder="상품명을 입력하세요." value="${itemVO.itemName}" aria-label="Search" aria-describedby="search-addon" />
+            <input type="hidden" value="${adoptVO.viewType}" name="viewType"/>
+            <input type="search" name="subject" class="form-control rounded" placeholder="상품명을 입력하세요." value="${adoptVO.subject}" aria-label="Search" aria-describedby="search-addon" />
             <button type="submit" class="btn btn-outline-primary">검색</button>
 
         </div>
@@ -55,15 +55,19 @@
 
     <c:set var="buttonType1" value="primary"/>
     <c:set var="buttonType2" value="primary"/>
-    <c:if test="${itemVO.viewType eq 'list'}">
+    <c:if test="${adoptVO.viewType eq 'list'}">
         <c:set var="buttonType1" value="danger"/>
     </c:if>
-    <c:if test="${itemVO.viewType eq 'photo'}">
+    <c:if test="${adoptVO.viewType eq 'photo'}">
         <c:set var="buttonType2" value="danger"/>
     </c:if>
-    <a href="./selectItemList?viewType=list" class="btn btn-outline-${buttonType1}">리스트형</a>
-    <a href="./selectItemList?viewType=photo" class="btn btn-outline-${buttonType2}">카드형</a>
+    <a href="./adoptList?viewType=list" class="btn btn-outline-${buttonType1}">리스트형</a>
+    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">카드형</a>
     <table class="table table-hover table-bordered text-center">
+    <br/>
+    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">전체</a>
+    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">진행중</a>
+    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">완료</a>
         <thead>
         <tr>
             <th scope="col">번호</th>
@@ -75,12 +79,12 @@
         </tr>
         </thead>
         <colgroup>
+            <col width="30px">
+            <col width="60px">
+            <col width="190px">
             <col width="60px">
             <col width="120px">
-            <col width="80px">
-            <col width="120px">
-            <col width="120px">
-            <col width="120px">
+            <col width="30px">
         </colgroup>
 
         <tbody>
@@ -88,35 +92,32 @@
         <c:forEach var="adopt" items="${adoptList}">
             <tr>
                 <th scope="row">${number}</th>
-                <td><a href="./detailItem?id=${adopt.id}&viewType=${adoptVO.viewType}" style="text-decoration: none;"><strong>${adopt.subject}</strong></a></td>
-                <td><a href="./detailItem?id=${adopt.id}&viewType=${adoptVO.viewType}" style="text-decoration: none;"><strong>${adopt.category}</strong></a></td>
-                <td><a href="./detailItem?id=${adopt.id}&viewType=${adoptVO.viewType}" style="text-decoration: none;"><strong>${adopt.writer}</strong></a></td>
+                <td>${adopt.category}</td>
+                <td><a href="./adoptView?id=${adopt.id}&viewType=${adoptVO.viewType}" style="text-decoration: none;"><strong>${adopt.subject}</strong></a></td>
+                <td>${adopt.writer}</td>
                 <td>
                     <fmt:parseDate value="${adopt.rdate}" var="dateValue" pattern="yyyyMMddHHmmss"/>
                     <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd"/>
                 </td>
-                <td>${item.hit}</td>
-                <td><a href="./detailItem?id=${adopt.id}&viewType=${adoptVO.viewType}" class="btn btn-light btn-sm">상세보기</a></td>
-                <td><a href="./modifyItem?id=${adopt.id}&viewType=${adoptVO.viewType}" class="btn btn-primary btn-sm">수정</a></td>
-                <td><a href="./deleteItem?id=${adopt.id}&viewType=${adoptVO.viewType}" onclick="return fn_deleteAt(this.href)" class="btn btn-danger btn-sm">삭제</a></td>
+                <td>${adopt.hit}</td>
             </tr>
             <c:set var="number" value="${number-1}"/>
         </c:forEach>
         </tbody>
     </table>
-    <a href="./createItem?page=${itemVO.page}&viewType=${itemVO.viewType}" class="btn btn-primary border-right btn-sm" style="float: right">상품등록</a>
+    <a href="./createItem?page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-primary border-right btn-sm" style="float: right">상품등록</a>
     <nav>
         <ul class="pagination justify-content-center">
             <li class="page-item ${currentPage == 1? 'disabled' : '' }">
-                <a class="page-link" href="?page=${currentPage-1}&viewType=${itemVO.viewType}">이전</a>
+                <a class="page-link" href="?page=${currentPage-1}&viewType=${adoptVO.viewType}">이전</a>
             </li>
             <c:forEach begin="1" end="${totalPage}" var="pageNumber">
                 <li class="page-item ${pageNumber == currentPage ? 'active' : '' }" aria-current="page">
-                    <a class="page-link" href="?page=${pageNumber}&viewType=${itemVO.viewType}">${pageNumber}</a>
+                    <a class="page-link" href="?page=${pageNumber}&viewType=${adoptVO.viewType}">${pageNumber}</a>
                 </li>
             </c:forEach>
             <li class="page-item ${currentPage == totalPage? 'disabled' : '' }">
-                <a class="page-link" href="?page=${currentPage+1}&viewType=${itemVO.viewType}">다음</a>
+                <a class="page-link" href="?page=${currentPage+1}&viewType=${adoptVO.viewType}">다음</a>
             </li>
         </ul>
     </nav>

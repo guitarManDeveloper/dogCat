@@ -23,7 +23,17 @@ public class AdoptController {
 		//상품목록조회
 		List<AdoptVO> adoptList =  adoptService.adoptList(adoptVO);
 		model.addAttribute("adoptList",adoptList);
-		    
+		
+		
+		//총 카운터 수
+		int totalCnt = adoptService.getCnt(adoptVO);
+		int totalPage = (int)Math.ceil((double)totalCnt/adoptVO.getPageSize());
+		
+		
+		model.addAttribute("totalCnt",totalCnt);
+		model.addAttribute("totalPage",totalPage);
+		model.addAttribute("currentPage",adoptVO.getPage());
+		
 		return "dogCat/adopt/adoptList";
 	}
 	

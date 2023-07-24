@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상세목록화면</title>
 </head>
 <body>
-
+ 잘왔음 상세목록화면임
 </body>
 </html>

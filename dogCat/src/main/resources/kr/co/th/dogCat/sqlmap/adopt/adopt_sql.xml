@@ -22,7 +22,13 @@
 		ORDER BY id DESC
 		limit #{offset}, #{pageSize}
 	</select>
-
+	
+	<select id='getCnt' parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultType="int">
+		select count(*) from adopt
+		<if test='subject != null &amp;&amp;  !subject.equals("")'>
+			WHERE subject LIKE CONCAT('%', #{subject}, '%')
+		</if>
+	</select>
 
 
 </mapper>    

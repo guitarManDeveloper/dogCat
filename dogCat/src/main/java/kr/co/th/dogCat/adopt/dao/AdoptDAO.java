@@ -18,4 +18,9 @@ public class AdoptDAO {
 		return sqlsessionTemplate.selectList("adopt.adoptList", adoptVO);
 	}
 
+
+	public int getCnt(AdoptVO adoptVO) {
+		return sqlsessionTemplate.selectOne("adopt.getCnt", adoptVO);
+	}
+
 }

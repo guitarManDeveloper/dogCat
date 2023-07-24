@@ -20,4 +20,9 @@ public class AdoptServiceImpl implements AdoptService {
 		return adoptDAO.adoptList(adoptVO);
 	}
 
+	@Override
+	public int getCnt(AdoptVO adoptVO) {
+		return adoptDAO.getCnt(adoptVO);
+	}
+
 }
