@@ -18,6 +18,7 @@ public class AdoptVO extends Adopt {
 		this.pageSize = pageSize;
 	}
 	public int getOffset() {
+		int offset = (page-1)*pageSize;
 		return offset;
 	}
 	public void setOffset(int offset) {
