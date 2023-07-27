@@ -1,13 +1,16 @@
 package kr.co.th.dogCat.adopt.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.th.dogCat.adopt.service.AdoptService;
 import kr.co.th.dogCat.adopt.vo.AdoptVO;
@@ -36,17 +39,33 @@ public class AdoptController {
 		
 		return "dogCat/adopt/adoptList";
 	}
-	
-	
-	
-	
-	
-	
+
 	
 	//상세화면
 	@RequestMapping("/adoptView")
-	public String adoptView(ModelMap model) {		
+	public String adoptView(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) {
+		AdoptVO adopt =  adoptService.detail(adoptVO);
+		model.addAttribute("adopt",adopt);
 		return "dogCat/adopt/adoptView";
 	}
+	
+
+	/**
+	 * 상품 삭제처리
+	 * @param map
+	 * @return redirect:/selectItemList
+	 * @throws Exception
+	 */
+	@RequestMapping("/deleteAdopt")
+	public String deleteAdopt(@RequestParam Map<String, Object> map) throws Exception {
+		try {
+			//상품삭제
+			adoptService.delete(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/adoptList";
+	}
+
 	
 }

@@ -1,6 +1,7 @@
 package kr.co.th.dogCat.adopt.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,17 @@ public class AdoptDAO {
 
 
 	public int selectAdoptTotalCnt(AdoptVO adoptVO) {
-		return sqlsessionTemplate.selectOne("adopt.getCnt", adoptVO);
+		return sqlsessionTemplate.selectOne("adopt.selectAdoptTotalCnt", adoptVO);
+	}
+
+
+	public AdoptVO detail(AdoptVO adoptVO) {
+		return sqlsessionTemplate.selectOne("adopt.select_detail", adoptVO);
+	}
+
+
+	public void delete(Map<String, Object> map) {
+		sqlsessionTemplate.delete("adopt.delete", map);
 	}
 
 }

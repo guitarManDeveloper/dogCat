@@ -11,11 +11,15 @@
 		<id property="hit" column="hit"/>
 		<id property="rdate" column="rdate"/>
 		<id property="mdate" column="mdate"/>
+		<id property="name" column="name"/>
+		<id property="species" column="species"/>
+		<id property="phone" column="phone"/>
+		<id property="originalFileName" column="originalFileName"/>
 	</resultMap>
 
 
 	<select id='adoptList' parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultMap="adoptVOMap">
-		select * from adopt
+		SELECT * FROM ADOPT
 		<if test='subject != null &amp;&amp;  !subject.equals("")'>
 			WHERE subject LIKE CONCAT('%', #{subject}, '%')
 		</if>
@@ -23,12 +27,19 @@
 		limit #{offset}, #{pageSize}
 	</select>
 	
-	<select id='getCnt' parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultType="int">
-		select count(*) from adopt
+	<select id='selectAdoptTotalCnt' parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultType="int">
+		SELECT COUNT(*) FROM ADOPT
 		<if test='subject != null &amp;&amp;  !subject.equals("")'>
 			WHERE subject LIKE CONCAT('%', #{subject}, '%')
 		</if>
 	</select>
-
+	
+	<select id="select_detail" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultMap="adoptVOMap">
+		SELECT * FROM ADOPT WHERE ADOPT.ID = #{id}
+	</select>
+	
+	<delete id="delete" parameterType="hashMap">
+		DELETE FROM ADOPT WHERE ID = #{id}
+	</delete>
 
 </mapper>    

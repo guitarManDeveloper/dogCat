@@ -1,6 +1,7 @@
 package kr.co.th.dogCat.adopt.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.th.dogCat.adopt.vo.AdoptVO;
 
@@ -13,4 +14,10 @@ public interface AdoptService {
 	
 	//상품목록의 카운트 수
 	int selectAdoptTotalCnt(AdoptVO adoptVO);
+	
+	//상세보기정보 조회
+	AdoptVO detail(AdoptVO adoptVO);
+
+
+	void delete(Map<String, Object> map);
 }

@@ -8,6 +8,10 @@ public class Adopt {
 	private int hit;	//조회수
 	private String rdate;	//등록일
 	private String mdate;	//수정일
+	private String name; //펫 이름
+	private String species; //동물종류
+	private String phone; //연락처
+	private String originalFileName; //파일명
 	public int getId() {
 		return id;
 	}
@@ -49,6 +53,30 @@ public class Adopt {
 	}
 	public void setMdate(String mdate) {
 		this.mdate = mdate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSpecies() {
+		return species;
+	}
+	public void setSpecies(String species) {
+		this.species = species;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
 	}
 	
 	

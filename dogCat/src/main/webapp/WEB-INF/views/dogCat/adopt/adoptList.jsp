@@ -31,12 +31,6 @@
 		});
 	});
 
-	function fn_deleteAt(url) {
-        if( confirm("삭제하시겠습니까?")){
-            window.location = url;
-        }
-        return false;
-    }
 </script>
 <br/>
 <body >
