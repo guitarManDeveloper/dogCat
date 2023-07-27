@@ -26,7 +26,7 @@ public class AdoptController {
 		
 		
 		//총 카운터 수
-		int totalCnt = adoptService.getCnt(adoptVO);
+		int totalCnt = adoptService.selectAdoptTotalCnt(adoptVO);
 		int totalPage = (int)Math.ceil((double)totalCnt/adoptVO.getPageSize());
 		
 		

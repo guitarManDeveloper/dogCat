@@ -12,5 +12,5 @@ public interface AdoptService {
 	
 	
 	//상품목록의 카운트 수
-	int getCnt(AdoptVO adoptVO);
+	int selectAdoptTotalCnt(AdoptVO adoptVO);
 }

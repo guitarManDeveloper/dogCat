@@ -19,7 +19,7 @@ public class AdoptDAO {
 	}
 
 
-	public int getCnt(AdoptVO adoptVO) {
+	public int selectAdoptTotalCnt(AdoptVO adoptVO) {
 		return sqlsessionTemplate.selectOne("adopt.getCnt", adoptVO);
 	}
 
