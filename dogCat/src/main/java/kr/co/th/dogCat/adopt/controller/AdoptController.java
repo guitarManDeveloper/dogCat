@@ -3,14 +3,17 @@ package kr.co.th.dogCat.adopt.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import kr.co.th.dogCat.adopt.service.AdoptService;
 import kr.co.th.dogCat.adopt.vo.AdoptVO;
@@ -22,7 +25,7 @@ public class AdoptController {
 	
 	//분양목록화면
 	@RequestMapping("/adoptList")
-	public String adoptList(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) {		
+	public String adoptList(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) throws Exception {		
 		//상품목록조회
 		List<AdoptVO> adoptList =  adoptService.adoptList(adoptVO);
 		model.addAttribute("adoptList",adoptList);
@@ -66,6 +69,30 @@ public class AdoptController {
 		}
 		return "redirect:/adoptList";
 	}
+	
+	@RequestMapping(value = "/createAdopt" ,method = RequestMethod.GET)
+	public ModelAndView createAdopt(@ModelAttribute("adoptVO")AdoptVO adoptVO) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("dogCat/adopt/adoptCreate");
+		return mv;
+	}
 
+	@RequestMapping(value = "/createAdopt",method = RequestMethod.POST)
+	public ModelAndView createAdopt(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model,HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		//상품등록
+		try {
+			adoptService.insert(adoptVO, request);
+			mav.setViewName("redirect:/adoptList");
+		} catch (Exception e) {
+			e.printStackTrace();
+			//등록실패
+			mav.setViewName("redirect:/adoptList");
+			return mav;
+		}
+		return mav;
+	}
+	
+	
 	
 }

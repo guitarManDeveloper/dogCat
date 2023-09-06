@@ -41,5 +41,10 @@
 	<delete id="delete" parameterType="hashMap">
 		DELETE FROM ADOPT WHERE ID = #{id}
 	</delete>
+	
+	<insert id="insert" useGeneratedKeys="true"	keyProperty="id" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO">
+		INSERT INTO ADOPT(subject,,originalFileName,rdate)
+		values(#{subject},#{originalFileName},#{rdate});
+	</insert>
 
 </mapper>    

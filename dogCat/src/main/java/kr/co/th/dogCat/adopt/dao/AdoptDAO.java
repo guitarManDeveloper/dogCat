@@ -34,4 +34,10 @@ public class AdoptDAO {
 		sqlsessionTemplate.delete("adopt.delete", map);
 	}
 
+
+	public void insert(AdoptVO adoptVO) {
+		sqlsessionTemplate.insert("item.insert", adoptVO);
+		
+	}
+
 }

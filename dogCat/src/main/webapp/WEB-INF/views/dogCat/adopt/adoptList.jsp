@@ -99,7 +99,7 @@
         </c:forEach>
         </tbody>
     </table>
-    <a href="./createItem?page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-primary border-right btn-sm" style="float: right">상품등록</a>
+    <a href="./createAdopt?page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-primary border-right btn-sm" style="float: right">상품등록</a>
     <nav>
         <ul class="pagination justify-content-center">
             <li class="page-item ${currentPage == 1? 'disabled' : '' }">
