@@ -22,7 +22,7 @@ import kr.co.th.dogCat.common.util.FileUtil;
 public class AdoptServiceImpl implements AdoptService {
 
 	//테스트용
-	static String ITEM_FILE_PATH = "D:\\LHW\\MAINTENANCE\\intelliJProject\\springmvc\\src\\main\\webapp\\resources\\userImageData"; //파일저장경로
+	static String ITEM_FILE_PATH = "C:\\Users\\xodnq\\git\\dogCat\\dogCat\\src\\main\\webapp\\resources\\userImageData"; //파일저장경로
 	
 	//실서버용
 	//static String ITEM_FILE_PATH = "/home/item/webapp/resources/userImageData"; //파일저장경로	
@@ -53,18 +53,16 @@ public class AdoptServiceImpl implements AdoptService {
 
 	@Override
 	public void insert(AdoptVO adoptVO, HttpServletRequest request) throws Exception {
-		//파일저장
-		MultipartRequest multi = new MultipartRequest(request,
-				ITEM_FILE_PATH,
-				ITEM_FILE_MAX_SIZE,
-				"utf-8",
-				new DefaultFileRenamePolicy());
-
-		//파일저장
-		boolean fileUploadFlag = FileUtil.fileUpload(request,multi);
-		if(fileUploadFlag) {
-			adoptVO.setOriginalFileName(multi.getOriginalFileName("image"));
-		}
+		/*
+		 * //파일저장 MultipartRequest multi = new MultipartRequest(request, ITEM_FILE_PATH,
+		 * ITEM_FILE_MAX_SIZE, "utf-8", new DefaultFileRenamePolicy());
+		 * 
+		 * //파일저장 boolean fileUploadFlag = FileUtil.fileUpload(request,multi);
+		 * if(fileUploadFlag) {
+		 * adoptVO.setOriginalFileName(multi.getOriginalFileName("image")); }
+		 */
+		
+		adoptVO.setOriginalFileName("test");
 		
 		//현재시간구하기
 		String strNowDate = DateUtil.nowDate("yyyyMMddHHmmss");

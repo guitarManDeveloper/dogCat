@@ -19,10 +19,14 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		
+		
 	</beans:bean>
 	
 	<context:component-scan base-package="kr.co.th" />
 	
-	
+	<!--빈 이름은 무조건  multipartResolver -->
+ <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
+
 	
 </beans:beans>

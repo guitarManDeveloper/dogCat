@@ -3,7 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<!-- <meta charset="UTF-8"> -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>등록화면</title>
 </head>
 <link
@@ -41,7 +42,8 @@
 	<br/>
 	<h2 class="text-center">상품 등록</h2>
 	<br/>
-	<form method="post" enctype="multipart/form-data" action="./adoptCreate">
+	<!-- <form method="post" enctype="multipart/form-data" action="./createAdopt"> -->
+	<form method="post" action="./createAdopt">
 		<table class="table table-bordered">
 			<colgroup>
 				<col width="180px">
@@ -53,16 +55,16 @@
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" style="width: 250px" class="form-control" id="itemname" name="itemName" value="" placeholder="제목을 입력하세요"></td>
+				<td><input type="text" style="width: 250px" class="form-control" id="subject" name="subject" value="" placeholder="제목을 입력하세요"></td>
 			</tr>
 			<tr>
 				<th>글쓴이</th>
-				<td><input type="text" style="width: 250px"  class="form-control" id="price" name="price" value="" placeholder="이름을 입력하세요"></td>
+				<td><input type="text" style="width: 250px"  class="form-control" id="writer" name="writer" value="" placeholder="이름을 입력하세요"></td>
 			</tr>
-            <tr>
+            <!-- <tr>
                 <th>이미지</th>
                 <td><input type="file" style="width: 250px"  class="form-control" id="image" name="image" value="" placeholder="이미지를 첨부하세요"></td>
-            </tr>
+            </tr> -->
 		</table>
 		<button id='btn_modify' type="submit" class="btn btn-primary btn-sm" style="float: right;margin-left: 5px">등록</button>
 		<a href="./adoptList?page=${pageNumber}&viewType=${searchMap.viewType}" class="btn btn-secondary btn-sm" style="float: right;margin-left: 5px">목록</a>

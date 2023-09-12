@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -78,6 +79,7 @@ public class AdoptController {
 	}
 
 	@RequestMapping(value = "/createAdopt",method = RequestMethod.POST)
+	//public ModelAndView createAdopt(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model,HttpServletRequest request,final MultipartHttpServletRequest multiRequest) {
 	public ModelAndView createAdopt(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		//상품등록

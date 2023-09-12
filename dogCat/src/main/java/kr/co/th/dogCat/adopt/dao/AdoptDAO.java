@@ -36,7 +36,7 @@ public class AdoptDAO {
 
 
 	public void insert(AdoptVO adoptVO) {
-		sqlsessionTemplate.insert("item.insert", adoptVO);
+		sqlsessionTemplate.insert("adopt.insert", adoptVO);
 		
 	}
 
