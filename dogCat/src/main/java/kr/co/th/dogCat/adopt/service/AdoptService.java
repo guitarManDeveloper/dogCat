@@ -27,4 +27,7 @@ public interface AdoptService {
 
 
 	void insert(AdoptVO adoptVO, HttpServletRequest request) throws Exception;
+
+
+	void update(AdoptVO adoptVO);
 }

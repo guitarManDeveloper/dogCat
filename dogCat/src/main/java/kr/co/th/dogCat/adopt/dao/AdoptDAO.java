@@ -40,4 +40,10 @@ public class AdoptDAO {
 		
 	}
 
+
+	public void update(AdoptVO adoptVO) {
+		sqlsessionTemplate.update("adopt.modify", adoptVO);
+		
+	}
+
 }

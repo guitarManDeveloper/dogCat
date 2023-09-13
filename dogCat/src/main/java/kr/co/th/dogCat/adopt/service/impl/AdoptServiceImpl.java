@@ -72,4 +72,14 @@ public class AdoptServiceImpl implements AdoptService {
 
 	}
 
+	@Override
+	public void update(AdoptVO adoptVO) {
+		//현재시간구하기
+		String strNowDate = DateUtil.nowDate("yyyyMMddHHmmss");
+		adoptVO.setMdate(strNowDate);
+		adoptDAO.update(adoptVO);
+		
+	}
+
+
 }

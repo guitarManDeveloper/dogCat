@@ -63,7 +63,7 @@
 	</table>
 	<div style="margin-left: 900px; margin-right: auto;">
 		<a href="./adoptList?page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-secondary btn-sm" >목록</a>
-		<a href="./modifyItem?id=${adopt.id}&page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-primary btn-sm" >수정</a>
+		<a href="./modifyAdopt?id=${adopt.id}&page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-primary btn-sm" >수정</a>
 		<a href="./deleteAdopt?id=${adopt.id}" onclick="return fn_deleteAt(this.href)" class="btn btn-danger btn-sm" >삭제</a>
 	</div>
 

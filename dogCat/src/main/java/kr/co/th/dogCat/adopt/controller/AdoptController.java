@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -95,6 +97,33 @@ public class AdoptController {
 		return mav;
 	}
 	
+	 @RequestMapping(value = "/modifyAdopt" ,method = RequestMethod.GET)
+	    public String modifyAdopt(@ModelAttribute("adoptVO")AdoptVO adoptVO, ModelMap model)throws Exception{
+			//상품 상세정보조회
+		 	AdoptVO adopt =  adoptService.detail(adoptVO);
+		 	model.addAttribute("adopt",adopt);
+		 	
+		 	return "dogCat/adopt/adoptModify";
+	    }
+
+		/**
+		 * 상품수정 처리
+		 * @param map
+		 * @return "success"
+		 * @throws Exception
+		 */
+	 	@RequestMapping(value = "/modifyAdopt" ,method = RequestMethod.POST)
+		public String modifyAdopt(@ModelAttribute("adoptVO")AdoptVO adoptVO, ModelMap model, HttpServletRequest request) throws Exception {
+			try {
+				//상품수정
+				adoptService.update(adoptVO);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			//return "dogCat/adopt/adoptList";
+			return "redirect:/adoptList";
+		}
 	
 	
 }
