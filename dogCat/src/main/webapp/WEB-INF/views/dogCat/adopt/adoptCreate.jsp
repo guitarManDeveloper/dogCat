@@ -50,16 +50,31 @@
 				<col>
 			</colgroup>
 			<tr>
-				<th>카테고리</th>
-				<td><select id="commonCodeSelect" name="fId" style="width: 150px"  class="form-select" aria-label="Default select example"></select></td>
+				<th>종류</th>
+				<td>
+				<select  id="commonCodeSelect" name="species" style="width: 150px"  class="form-select" aria-label="Default select example">
+					<option value="">선택하세요</option>
+					<option value="강아지">강아지</option>
+					<option value="고양이">고양이</option>
+					<option value="파충류">파충류</option>
+				</select>
+				</td>
 			</tr>
 			<tr>
 				<th>제목</th>
 				<td><input type="text" style="width: 250px" class="form-control" id="subject" name="subject" value="" placeholder="제목을 입력하세요"></td>
 			</tr>
 			<tr>
+				<th>펫이름</th>
+				<td><input type="text" style="width: 250px" class="form-control" id="name" name="name" value="" placeholder="펫이름 입력하세요"></td>
+			</tr>
+			<tr>
 				<th>글쓴이</th>
 				<td><input type="text" style="width: 250px"  class="form-control" id="writer" name="writer" value="" placeholder="이름을 입력하세요"></td>
+			</tr>
+			<tr>
+				<th>연락처</th>
+				<td><input type="text" style="width: 250px" class="form-control" id="phone" name="phone" value="" placeholder="연락처를 입력하세요"></td>
 			</tr>
             <!-- <tr>
                 <th>이미지</th>

@@ -9,12 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -28,7 +25,12 @@ public class AdoptController {
 	
 	//분양목록화면
 	@RequestMapping("/adoptList")
-	public String adoptList(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) throws Exception {		
+	public String adoptList(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) throws Exception {	
+		
+		if(adoptVO.getViewType().equals("photo")){
+			adoptVO.setPageSize(8);
+		}
+		
 		//상품목록조회
 		List<AdoptVO> adoptList =  adoptService.adoptList(adoptVO);
 		model.addAttribute("adoptList",adoptList);
@@ -43,7 +45,16 @@ public class AdoptController {
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("currentPage",adoptVO.getPage());
 		
-		return "dogCat/adopt/adoptList";
+	    if(adoptVO.getViewType().equals("list")){
+	    	return "dogCat/adopt/adoptList";
+        }else if(adoptVO.getViewType().equals("photo")){
+        	return "dogCat/adopt/adoptPhotoList";
+        }else{
+        	return "dogCat/adopt/adoptList";
+        }
+		
+		
+		
 	}
 
 	
@@ -74,10 +85,8 @@ public class AdoptController {
 	}
 	
 	@RequestMapping(value = "/createAdopt" ,method = RequestMethod.GET)
-	public ModelAndView createAdopt(@ModelAttribute("adoptVO")AdoptVO adoptVO) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("dogCat/adopt/adoptCreate");
-		return mv;
+	public String createAdopt(@ModelAttribute("adoptVO")AdoptVO adoptVO, ModelMap model) {
+		return "dogCat/adopt/adoptCreate";
 	}
 
 	@RequestMapping(value = "/createAdopt",method = RequestMethod.POST)
