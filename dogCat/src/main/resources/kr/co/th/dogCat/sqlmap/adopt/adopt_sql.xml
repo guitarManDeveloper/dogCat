@@ -20,8 +20,12 @@
 
 	<select id='adoptList' parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultMap="adoptVOMap">
 		SELECT * FROM ADOPT
+		WHERE 1=1
 		<if test='subject != null &amp;&amp;  !subject.equals("")'>
-			WHERE subject LIKE CONCAT('%', #{subject}, '%')
+			 AND subject LIKE CONCAT('%', #{subject}, '%')
+		</if>
+		<if test='category != null &amp;&amp;  !category.equals("")'>
+			 AND category = #{category}
 		</if>
 		ORDER BY id DESC
 		limit #{offset}, #{pageSize}
@@ -29,8 +33,12 @@
 	
 	<select id='selectAdoptTotalCnt' parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultType="int">
 		SELECT COUNT(*) FROM ADOPT
+		WHERE 1=1
 		<if test='subject != null &amp;&amp;  !subject.equals("")'>
-			WHERE subject LIKE CONCAT('%', #{subject}, '%')
+			 AND subject LIKE CONCAT('%', #{subject}, '%')
+		</if>
+		<if test='category != null &amp;&amp;  !category.equals("")'>
+			 AND category = #{category}
 		</if>
 	</select>
 	
@@ -43,14 +51,18 @@
 	</delete>
 	
 	<insert id="insert" useGeneratedKeys="true"	keyProperty="id" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO">
-		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone)
-		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone});
+		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category)
+		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category});
 	</insert>
 	
 	<update id="modify" parameterType="hashMap">
 		update adopt
 		set category = #{category}, subject=#{subject},writer=#{writer},mdate=#{mdate}
 		where id = #{id};
+	</update>
+	
+	<update id="hitUp" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO">
+		update adopt set hit = hit+1 where id = #{id}
 	</update>
 
 </mapper>    

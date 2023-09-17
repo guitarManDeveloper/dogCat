@@ -81,5 +81,12 @@ public class AdoptServiceImpl implements AdoptService {
 		
 	}
 
+	@Override
+	public void hitUp(AdoptVO adoptVO) {
+		//조회수증가
+		adoptDAO.hitUp(adoptVO);
+		
+	}
+
 
 }

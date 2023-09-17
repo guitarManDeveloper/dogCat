@@ -35,6 +35,7 @@ public class AdoptController {
 		List<AdoptVO> adoptList =  adoptService.adoptList(adoptVO);
 		model.addAttribute("adoptList",adoptList);
 		
+
 		
 		//총 카운터 수
 		int totalCnt = adoptService.selectAdoptTotalCnt(adoptVO);
@@ -61,6 +62,9 @@ public class AdoptController {
 	//상세화면
 	@RequestMapping("/adoptView")
 	public String adoptView(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) {
+		//조회수증가
+		adoptService.hitUp(adoptVO);
+		
 		AdoptVO adopt =  adoptService.detail(adoptVO);
 		model.addAttribute("adopt",adopt);
 		return "dogCat/adopt/adoptView";

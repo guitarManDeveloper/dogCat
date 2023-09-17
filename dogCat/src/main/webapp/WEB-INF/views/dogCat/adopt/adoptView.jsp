@@ -42,12 +42,20 @@
 			<col>
 		</colgroup>
 		<tr>
+			<th>제목</th>
+			<td>${adopt.subject}</td>
+		</tr>
+		<tr>
 			<th>종류</th>
 			<td>${adopt.species}</td>
 		</tr>
 		<tr>
-			<th>이름</th>
+			<th>펫이름</th>
 			<td>${adopt.name}</td>
+		</tr>
+		<tr>
+			<th>글쓴이</th>
+			<td>${adopt.writer}</td>
 		</tr>
 		<tr>
 			<th>연락처</th>

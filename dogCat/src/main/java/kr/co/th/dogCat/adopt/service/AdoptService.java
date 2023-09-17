@@ -30,4 +30,7 @@ public interface AdoptService {
 
 
 	void update(AdoptVO adoptVO);
+
+
+	void hitUp(AdoptVO adoptVO);
 }

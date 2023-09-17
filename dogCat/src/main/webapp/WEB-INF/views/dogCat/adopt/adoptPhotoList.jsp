@@ -57,10 +57,23 @@
     </c:if>
     <a href="./adoptList?viewType=list" class="btn btn-outline-${buttonType1}" >리스트형</a>
     <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}" >카드형</a>
-    <br/>
-    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">전체</a>
-    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">진행중</a>
-    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">완료</a>
+   <br/>
+   
+    <c:set var="categoryButtonType1" value="primary"/>
+    <c:set var="categoryButtonType2" value="primary"/>
+    <c:set var="categoryButtonType3" value="primary"/>
+    <c:if test="${empty adoptVO.category}">
+        <c:set var="categoryButtonType1" value="danger"/>
+    </c:if>
+    <c:if test="${adoptVO.category eq '진행중'}">
+        <c:set var="categoryButtonType2" value="danger"/>
+    </c:if>
+    <c:if test="${adoptVO.category eq '완료'}">
+        <c:set var="categoryButtonType3" value="danger"/>
+    </c:if>
+    <a href="./adoptList?viewType=${adoptVO.viewType}&category=" class="btn btn-outline-${categoryButtonType1}">전체</a>
+    <a href="./adoptList?viewType=${adoptVO.viewType}&category=진행중" class="btn btn-outline-${categoryButtonType2}">진행중</a>
+    <a href="./adoptList?viewType=${adoptVO.viewType}&category=완료" class="btn btn-outline-${categoryButtonType3}">완료</a>
     <div class="row">
         <form action="./adoptList" method="get">
             <div class="input-group" style="float:right; width: 400px; margin-bottom: 15px;">

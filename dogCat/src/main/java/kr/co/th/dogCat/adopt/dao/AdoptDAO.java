@@ -46,4 +46,10 @@ public class AdoptDAO {
 		
 	}
 
+
+	public void hitUp(AdoptVO adoptVO) {
+		sqlsessionTemplate.update("adopt.hitUp",adoptVO);
+		
+	}
+
 }

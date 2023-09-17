@@ -35,6 +35,10 @@
 <br/>
 <body >
 <div class='container'>
+	<div class='container'>
+        <%@ include file="/WEB-INF/views/common/loginCommon.jsp" %>
+    </div>
+    <br/>
     <h2 class="text-center">멍멍냐옹 목록 게시판</h2>
     <br/>
     <form action="./adoptList" method="get">
@@ -59,9 +63,23 @@
     <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">카드형</a>
     <table class="table table-hover table-bordered text-center">
     <br/>
-    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">전체</a>
-    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">진행중</a>
-    <a href="./adoptList?viewType=photo" class="btn btn-outline-${buttonType2}">완료</a>
+    
+    
+    <c:set var="categoryButtonType1" value="primary"/>
+    <c:set var="categoryButtonType2" value="primary"/>
+    <c:set var="categoryButtonType3" value="primary"/>
+    <c:if test="${empty adoptVO.category}">
+        <c:set var="categoryButtonType1" value="danger"/>
+    </c:if>
+    <c:if test="${adoptVO.category eq '진행중'}">
+        <c:set var="categoryButtonType2" value="danger"/>
+    </c:if>
+    <c:if test="${adoptVO.category eq '완료'}">
+        <c:set var="categoryButtonType3" value="danger"/>
+    </c:if>
+    <a href="./adoptList?viewType=${adoptVO.viewType}&category=" class="btn btn-outline-${categoryButtonType1}">전체</a>
+    <a href="./adoptList?viewType=${adoptVO.viewType}&category=진행중" class="btn btn-outline-${categoryButtonType2}">진행중</a>
+    <a href="./adoptList?viewType=${adoptVO.viewType}&category=완료" class="btn btn-outline-${categoryButtonType3}">완료</a>
         <thead>
         <tr>
             <th scope="col">번호</th>
@@ -90,8 +108,14 @@
                 <td><a href="./adoptView?id=${adopt.id}&viewType=${adoptVO.viewType}" style="text-decoration: none;"><strong>${adopt.subject}</strong></a></td>
                 <td>${adopt.writer}</td>
                 <td>
-                    <fmt:parseDate value="${adopt.rdate}" var="dateValue" pattern="yyyyMMddHHmmss"/>
-                    <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd"/>
+                	<c:if test="${empty adopt.mdate}">
+	                	<fmt:parseDate value="${adopt.rdate}" var="dateValue" pattern="yyyyMMddHHmmss"/>
+	                    <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd"/>
+                	</c:if>
+                    <c:if test="${not empty adopt.mdate}">
+	                	<fmt:parseDate value="${adopt.mdate}" var="dateValue" pattern="yyyyMMddHHmmss"/>
+	                    <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd"/>
+                	</c:if>
                 </td>
                 <td>${adopt.hit}</td>
             </tr>
