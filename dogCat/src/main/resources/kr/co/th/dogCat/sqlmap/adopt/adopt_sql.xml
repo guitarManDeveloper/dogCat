@@ -15,6 +15,7 @@
 		<id property="species" column="species"/>
 		<id property="phone" column="phone"/>
 		<id property="originalFileName" column="originalFileName"/>
+		<id property="content" column="content"/>
 	</resultMap>
 
 
@@ -22,12 +23,29 @@
 		SELECT * FROM ADOPT
 		WHERE 1=1
 		<if test='subject != null &amp;&amp;  !subject.equals("")'>
-			 AND subject LIKE CONCAT('%', #{subject}, '%')
+			 <if test='searchContentAt.equals("Y")'>
+				 AND (subject LIKE CONCAT('%', #{subject}, '%') OR content LIKE CONCAT('%', #{subject}, '%'))
+			</if>
+			 <if test='!searchContentAt.equals("Y")'>
+			  AND subject LIKE CONCAT('%', #{subject}, '%') 
+			</if>
 		</if>
 		<if test='category != null &amp;&amp;  !category.equals("")'>
 			 AND category = #{category}
 		</if>
-		ORDER BY id DESC
+
+		<if test='hitOrder != null &amp;&amp;  !hitOrder.equals("")'>
+			<if test='hitOrder.equals("DESC")'>
+			 	ORDER BY HIT DESC
+			</if>
+			<if test='hitOrder.equals("ASC")'>
+			 	ORDER BY HIT ASC
+			</if>
+		</if>
+		<if test='hitOrder == null or hitOrder.equals("")'>
+			ORDER BY ID DESC
+		</if>
+		
 		limit #{offset}, #{pageSize}
 	</select>
 	
@@ -35,7 +53,12 @@
 		SELECT COUNT(*) FROM ADOPT
 		WHERE 1=1
 		<if test='subject != null &amp;&amp;  !subject.equals("")'>
-			 AND subject LIKE CONCAT('%', #{subject}, '%')
+			 <if test='searchContentAt.equals("Y")'>
+				 AND (subject LIKE CONCAT('%', #{subject}, '%') OR content LIKE CONCAT('%', #{subject}, '%'))
+			</if>
+			 <if test='!searchContentAt.equals("Y")'>
+			  AND subject LIKE CONCAT('%', #{subject}, '%') 
+			</if>
 		</if>
 		<if test='category != null &amp;&amp;  !category.equals("")'>
 			 AND category = #{category}
@@ -51,13 +74,13 @@
 	</delete>
 	
 	<insert id="insert" useGeneratedKeys="true"	keyProperty="id" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO">
-		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category)
-		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category});
+		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category,content)
+		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category},#{content});
 	</insert>
 	
 	<update id="modify" parameterType="hashMap">
 		update adopt
-		set category = #{category}, subject=#{subject},writer=#{writer},mdate=#{mdate}
+		set category = #{category}, subject=#{subject},writer=#{writer},mdate=#{mdate},name=#{name},phone=#{phone},content=#{content},originalFileName=#{originalFileName}
 		where id = #{id};
 	</update>
 	

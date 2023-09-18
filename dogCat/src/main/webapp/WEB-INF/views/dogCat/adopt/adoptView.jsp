@@ -61,6 +61,10 @@
 			<th>연락처</th>
 			<td>${adopt.phone}</td>
 		</tr>
+		<tr>
+			<th>내용</th>
+			<td>${adopt.content}</td>
+		</tr>
         <tr>
             <th>이미지</th>
             <%--<td>/image/파랑.jpg</td>--%>

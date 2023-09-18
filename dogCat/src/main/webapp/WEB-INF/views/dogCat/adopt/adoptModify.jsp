@@ -45,19 +45,23 @@
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td><input type="text" style="width: 250px" class="form-control" id="subject" name="subject" value="" placeholder="제목을 입력하세요"></td>
+				<td><input type="text" style="width: 250px" class="form-control" id="subject" name="subject" value="${adopt.subject}" placeholder="제목을 입력하세요"></td>
 			</tr>
 			<tr>
 				<th>펫이름</th>
-				<td><input type="text" style="width: 250px" class="form-control" id="name" name="name" value="" placeholder="펫이름 입력하세요"></td>
+				<td><input type="text" style="width: 250px" class="form-control" id="name" name="name" value="${adopt.name}" placeholder="펫이름 입력하세요"></td>
 			</tr>
 			<tr>
 				<th>글쓴이</th>
-				<td><input type="text" style="width: 250px"  class="form-control" id="writer" name="writer" value="" placeholder="이름을 입력하세요"></td>
+				<td><input type="text" style="width: 250px"  class="form-control" id="writer" name="writer" value="${adopt.writer}" placeholder="이름을 입력하세요"></td>
 			</tr>
 			<tr>
 				<th>연락처</th>
-				<td><input type="text" style="width: 250px" class="form-control" id="phone" name="phone" value="" placeholder="연락처를 입력하세요"></td>
+				<td><input type="text" style="width: 250px" class="form-control" id="phone" name="phone" value="${adopt.phone}" placeholder="연락처를 입력하세요"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><input type="text" style="width: 250px" class="form-control" id="content" name="content" value="${adopt.content}" placeholder="내용을 입력하세요"></td>
 			</tr>
 			<br>
 				<h5></h5>

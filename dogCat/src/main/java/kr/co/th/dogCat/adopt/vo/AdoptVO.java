@@ -5,6 +5,25 @@ public class AdoptVO extends Adopt {
 	private int pageSize = 10;
 	private int offset;
 	private int page = 1;
+	private String hitOrder; //조회순정렬값
+	private String searchContentAt = "N"; //
+	
+	
+	
+	
+	
+	public String getSearchContentAt() {
+		return searchContentAt;
+	}
+	public void setSearchContentAt(String searchContentAt) {
+		this.searchContentAt = searchContentAt;
+	}
+	public String getHitOrder() {
+		return hitOrder;
+	}
+	public void setHitOrder(String hitOrder) {
+		this.hitOrder = hitOrder;
+	}
 	public String getViewType() {
 		return viewType;
 	}

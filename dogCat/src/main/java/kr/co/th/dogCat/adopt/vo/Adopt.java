@@ -12,6 +12,16 @@ public class Adopt {
 	private String species; //동물종류
 	private String phone; //연락처
 	private String originalFileName; //파일명
+	private String content; //파일명
+	
+	
+	
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public int getId() {
 		return id;
 	}

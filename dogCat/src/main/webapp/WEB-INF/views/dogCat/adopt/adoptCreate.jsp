@@ -50,6 +50,11 @@
 				<col>
 			</colgroup>
 			<tr>
+				<th>상태</th>
+				<td><input type="radio" id="category" name="category" value="진행중" checked="checked">진행중
+			 	<input type="radio" id="category" name="category" value="완료">완료</td>
+			</tr>
+			<tr>
 				<th>종류</th>
 				<td>
 				<select  id="commonCodeSelect" name="species" style="width: 150px"  class="form-select" aria-label="Default select example">
@@ -76,11 +81,11 @@
 				<th>연락처</th>
 				<td><input type="text" style="width: 250px" class="form-control" id="phone" name="phone" value="" placeholder="연락처를 입력하세요"></td>
 			</tr>
-			<br>
-				<h5></h5>
-				<input type="radio" id="category" name="category" value="진행중" checked="checked">진행중
-			 	<input type="radio" id="category" name="category" value="완료">완료
-			<br>
+			<tr>
+				<th>내용</th>
+				<td><input type="text" style="width: 250px" class="form-control" id="content" name="content" value="" placeholder="내용을 입력하세요"></td>
+			</tr>
+			
             <!-- <tr>
                 <th>이미지</th>
                 <td><input type="file" style="width: 250px"  class="form-control" id="image" name="image" value="" placeholder="이미지를 첨부하세요"></td>
