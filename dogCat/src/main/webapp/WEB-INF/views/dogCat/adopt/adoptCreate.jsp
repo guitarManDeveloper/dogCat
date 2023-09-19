@@ -51,8 +51,17 @@
 			</colgroup>
 			<tr>
 				<th>상태</th>
-				<td><input type="radio" id="category" name="category" value="진행중" checked="checked">진행중
-			 	<input type="radio" id="category" name="category" value="완료">완료</td>
+				 <td>
+					<input type="radio" id="category" name="category" value="진행중">진행중
+				 	<input type="radio" id="category" name="category" value="완료">완료
+				 </td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				 <td>
+					<input type="radio" id="gender" name="gender" value="수컷">수컷
+				 	<input type="radio" id="gender" name="gender" value="암컷">암컷
+				 </td>
 			</tr>
 			<tr>
 				<th>종류</th>

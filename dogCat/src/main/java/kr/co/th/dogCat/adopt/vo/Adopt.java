@@ -13,9 +13,16 @@ public class Adopt {
 	private String phone; //연락처
 	private String originalFileName; //파일명
 	private String content; //파일명
+	private String gender; //성별
 	
 	
 	
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	public String getContent() {
 		return content;
 	}

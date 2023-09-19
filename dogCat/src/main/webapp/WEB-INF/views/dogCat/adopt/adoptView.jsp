@@ -50,6 +50,10 @@
 			<td>${adopt.species}</td>
 		</tr>
 		<tr>
+			<th>성별</th>
+			<td>${adopt.gender}</td>
+		</tr>
+		<tr>
 			<th>펫이름</th>
 			<td>${adopt.name}</td>
 		</tr>

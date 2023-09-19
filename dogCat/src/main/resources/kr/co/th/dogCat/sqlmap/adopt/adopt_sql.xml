@@ -16,6 +16,7 @@
 		<id property="phone" column="phone"/>
 		<id property="originalFileName" column="originalFileName"/>
 		<id property="content" column="content"/>
+		<id property="gender" column="gender"/>
 	</resultMap>
 
 
@@ -74,13 +75,13 @@
 	</delete>
 	
 	<insert id="insert" useGeneratedKeys="true"	keyProperty="id" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO">
-		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category,content)
-		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category},#{content});
+		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category,content,gender)
+		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category},#{content},#{gender});
 	</insert>
 	
 	<update id="modify" parameterType="hashMap">
 		update adopt
-		set category = #{category}, subject=#{subject},writer=#{writer},mdate=#{mdate},name=#{name},phone=#{phone},content=#{content},originalFileName=#{originalFileName}
+		set category = #{category}, subject=#{subject},writer=#{writer},mdate=#{mdate},name=#{name},phone=#{phone},content=#{content},originalFileName=#{originalFileName},gender=#{gender},species=#{species}
 		where id = #{id};
 	</update>
 	

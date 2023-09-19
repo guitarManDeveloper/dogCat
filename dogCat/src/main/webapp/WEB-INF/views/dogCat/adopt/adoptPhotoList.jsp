@@ -90,8 +90,10 @@
     <div class="row">
         <form action="./adoptList" method="get">
             <div class="input-group" style="float:right; width: 400px; margin-bottom: 15px;">
+            	
+            	<input type='checkbox' name='searchContentAt' value='Y' <c:if test="${adoptVO.searchContentAt eq 'Y'}">checked</c:if>/>내용포함
                 <input type="hidden" value="${adoptVO.viewType}" name="viewType"/>
-                <input type="search" name="subject" class="form-control rounded" placeholder="상품명을 입력하세요." value="${adoptVO.subject}" aria-label="Search" aria-describedby="search-addon" />
+                <input type="search" name="subject" class="form-control rounded" placeholder="검색어를 입력하세요." value="${adoptVO.subject}" aria-label="Search" aria-describedby="search-addon" />
                 <button type="submit" class="btn btn-outline-primary">검색</button>
 
             </div>
@@ -107,6 +109,7 @@
                         <h5 class="card-title">${adopt.subject}</h5>
                         <p class="card-text">${adopt.writer }</p>
                         <a href="./adoptView?id=${adopt.id}&page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-primary btn-sm">상세보기</a>
+                        <td>조회수 : ${adopt.hit}</td>
                     </div>
                 </div>
             </div>
