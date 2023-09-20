@@ -41,16 +41,25 @@
     <br/>
     <h2 class="text-center">멍멍냐옹 목록 게시판</h2>
     <br/>
+    
+    <form action="./adoptList" method="get">
+	    <input type="date" name="rdate" value="${adoptVO.rdate}" >
+	    <input type="submit" value="Submit">
+    </form>
+    
+    
     <form action="./adoptList" method="get">
         <div class="input-group" style="float:right; width: 400px; margin-bottom: 15px;">
-        
+        	
         	<input type='checkbox' name='searchContentAt' value='Y' <c:if test="${adoptVO.searchContentAt eq 'Y'}">checked</c:if>/>내용포함
             <input type="hidden" value="${adoptVO.viewType}" name="viewType"/>
             <input type="search" name="subject" class="form-control rounded" placeholder="검색어를 입력하세요." value="${adoptVO.subject}" aria-label="Search" aria-describedby="search-addon" />
             <button type="submit" class="btn btn-outline-primary">검색</button>
-    		
         </div>
     </form>
+    
+  
+
 
 
     <c:set var="buttonType1" value="primary"/>

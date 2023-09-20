@@ -34,6 +34,11 @@
 		<if test='category != null &amp;&amp;  !category.equals("")'>
 			 AND category = #{category}
 		</if>
+		
+		<if test='rdate != null &amp;&amp;  !rdate.equals("")'>
+			 AND substring(rdate,1,8) = #{rdate}
+		</if>
+		
 
 		<if test='hitOrder != null &amp;&amp;  !hitOrder.equals("")'>
 			<if test='hitOrder.equals("DESC")'>
@@ -60,9 +65,13 @@
 			 <if test='!searchContentAt.equals("Y")'>
 			  AND subject LIKE CONCAT('%', #{subject}, '%') 
 			</if>
+			
 		</if>
 		<if test='category != null &amp;&amp;  !category.equals("")'>
 			 AND category = #{category}
+		</if>
+		<if test='rdate != null &amp;&amp;  !rdate.equals("")'>
+			 AND substring(rdate,1,8) = #{rdate}
 		</if>
 	</select>
 	

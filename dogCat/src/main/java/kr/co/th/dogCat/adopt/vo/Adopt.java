@@ -6,7 +6,7 @@ public class Adopt {
 	private String subject;	//제목
 	private String writer;	//글쓴이
 	private int hit;	//조회수
-	private String rdate;	//등록일
+	private String rdate = "";	//등록일
 	private String mdate;	//수정일
 	private String name; //펫 이름
 	private String species; //동물종류

@@ -32,6 +32,13 @@ public class AdoptServiceImpl implements AdoptService {
 	
 	@Override
 	public List<AdoptVO> adoptList(AdoptVO adoptVO) {
+		//rdate 가공해줘야함
+		//-빼주기 tip replaceall
+		String rdate = adoptVO.getRdate();
+		rdate = rdate.replaceAll("-", "");
+		adoptVO.setRdate(rdate);
+		//adoptVO.setRdate(adoptVO.getRdate().replaceAll("-", ""));
+		
 		return adoptDAO.adoptList(adoptVO);
 	}
 
