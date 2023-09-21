@@ -34,9 +34,14 @@ public class AdoptServiceImpl implements AdoptService {
 	public List<AdoptVO> adoptList(AdoptVO adoptVO) {
 		//rdate 가공해줘야함
 		//-빼주기 tip replaceall
-		String rdate = adoptVO.getRdate();
-		rdate = rdate.replaceAll("-", "");
-		adoptVO.setRdate(rdate);
+		String searchStartDate = adoptVO.getSearchStartDate();
+		searchStartDate = searchStartDate.replaceAll("-", "");
+		adoptVO.setSearchStartDate(searchStartDate);
+		//adoptVO.setRdate(adoptVO.getRdate().replaceAll("-", ""));
+		
+		String searchEndDate = adoptVO.getSearchEndDate();
+		searchEndDate = searchEndDate.replaceAll("-", "");
+		adoptVO.setSearchEndDate(searchEndDate);
 		//adoptVO.setRdate(adoptVO.getRdate().replaceAll("-", ""));
 		
 		return adoptDAO.adoptList(adoptVO);
@@ -75,6 +80,7 @@ public class AdoptServiceImpl implements AdoptService {
 		String strNowDate = DateUtil.nowDate("yyyyMMddHHmmss");
 		adoptVO.setRdate(strNowDate);
 		
+		
 		adoptDAO.insert(adoptVO);
 
 	}
@@ -84,6 +90,7 @@ public class AdoptServiceImpl implements AdoptService {
 		//현재시간구하기
 		String strNowDate = DateUtil.nowDate("yyyyMMddHHmmss");
 		adoptVO.setMdate(strNowDate);
+		
 		adoptDAO.update(adoptVO);
 		
 	}

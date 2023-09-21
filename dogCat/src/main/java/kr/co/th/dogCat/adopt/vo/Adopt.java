@@ -17,6 +17,7 @@ public class Adopt {
 	
 	
 	
+	
 	public String getGender() {
 		return gender;
 	}

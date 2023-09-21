@@ -17,6 +17,7 @@
 		<id property="originalFileName" column="originalFileName"/>
 		<id property="content" column="content"/>
 		<id property="gender" column="gender"/>
+		
 	</resultMap>
 
 
@@ -35,8 +36,8 @@
 			 AND category = #{category}
 		</if>
 		
-		<if test='rdate != null &amp;&amp;  !rdate.equals("")'>
-			 AND substring(rdate,1,8) = #{rdate}
+		<if test='searchStartDate != null &amp;&amp;  !searchStartDate.equals("")'>
+			AND SUBSTRING(RDATE,1,8) <![CDATA[>=]]>   #{searchStartDate} AND SUBSTRING(RDATE,1,8) &gt;= #{searchEndDate}
 		</if>
 		
 
@@ -65,14 +66,14 @@
 			 <if test='!searchContentAt.equals("Y")'>
 			  AND subject LIKE CONCAT('%', #{subject}, '%') 
 			</if>
-			
 		</if>
 		<if test='category != null &amp;&amp;  !category.equals("")'>
 			 AND category = #{category}
 		</if>
-		<if test='rdate != null &amp;&amp;  !rdate.equals("")'>
-			 AND substring(rdate,1,8) = #{rdate}
+		<if test='searchStartDate != null &amp;&amp;  !searchStartDate.equals("")'>
+			AND SUBSTRING(RDATE,1,8) <![CDATA[>=]]>   #{searchStartDate} AND SUBSTRING(RDATE,1,8) &gt;= #{searchEndDate}
 		</if>
+		
 	</select>
 	
 	<select id="select_detail" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO" resultMap="adoptVOMap">
@@ -84,8 +85,8 @@
 	</delete>
 	
 	<insert id="insert" useGeneratedKeys="true"	keyProperty="id" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO">
-		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category,content,gender)
-		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category},#{content},#{gender});
+		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category,content,gender,rdate2)
+		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category},#{content},#{gender},#{rdate2});
 	</insert>
 	
 	<update id="modify" parameterType="hashMap">

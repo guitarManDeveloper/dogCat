@@ -7,11 +7,28 @@ public class AdoptVO extends Adopt {
 	private int page = 1;
 	private String hitOrder; //조회순정렬값
 	private String searchContentAt = "N"; //
+	private String searchStartDate = ""; //
+	private String searchEndDate = ""; //
 	
 	
 	
 	
 	
+	
+	
+	public String getSearchEndDate() {
+		return searchEndDate;
+	}
+	public void setSearchEndDate(String searchEndDate) {
+		this.searchEndDate = searchEndDate;
+	}
+	public String getSearchStartDate() {
+		return searchStartDate;
+	}
+	public void setSearchStartDate(String searchStartDate) {
+		this.searchStartDate = searchStartDate;
+	}
+
 	public String getSearchContentAt() {
 		return searchContentAt;
 	}

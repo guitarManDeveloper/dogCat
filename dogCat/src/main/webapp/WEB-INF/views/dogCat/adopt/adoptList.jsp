@@ -43,7 +43,8 @@
     <br/>
     
     <form action="./adoptList" method="get">
-	    <input type="date" name="rdate" value="${adoptVO.rdate}" >
+	    <input type="date" name="searchStartDate" value="${adoptVO.searchStartDate}" > ~ 
+	    <input type="date" name="searchEndDate" value="${adoptVO.searchEndDate}" >
 	    <input type="submit" value="Submit">
     </form>
     
@@ -109,6 +110,7 @@
             <th scope="col">제목</th>
             <th scope="col">글쓴이</th>
             <th scope="col">날짜</th>
+            <th scope="col">수정일</th>
             <th scope="col">조회수</th>
         </tr>
         </thead>
@@ -117,6 +119,7 @@
             <col width="60px">
             <col width="190px">
             <col width="60px">
+            <col width="120px">
             <col width="120px">
             <col width="30px">
         </colgroup>
@@ -130,10 +133,11 @@
                 <td><a href="./adoptView?id=${adopt.id}&viewType=${adoptVO.viewType}" style="text-decoration: none;"><strong>${adopt.subject}</strong></a></td>
                 <td>${adopt.writer}</td>
                 <td>
-                	<c:if test="${empty adopt.mdate}">
-	                	<fmt:parseDate value="${adopt.rdate}" var="dateValue" pattern="yyyyMMddHHmmss"/>
+                	<fmt:parseDate value="${adopt.rdate}" var="dateValue" pattern="yyyyMMddHHmmss"/>
 	                    <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd"/>
-                	</c:if>
+                    
+                </td>
+                <td>
                     <c:if test="${not empty adopt.mdate}">
 	                	<fmt:parseDate value="${adopt.mdate}" var="dateValue" pattern="yyyyMMddHHmmss"/>
 	                    <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd"/>
