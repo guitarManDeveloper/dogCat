@@ -23,6 +23,8 @@ public class AdoptController {
 	@Autowired
 	AdoptService adoptService;
 	
+	
+	
 	//분양목록화면
 	@RequestMapping("/adoptList")
 	public String adoptList(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) throws Exception {	

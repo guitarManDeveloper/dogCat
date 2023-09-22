@@ -37,7 +37,7 @@
 		</if>
 		
 		<if test='searchStartDate != null &amp;&amp;  !searchStartDate.equals("")'>
-			AND SUBSTRING(RDATE,1,8) <![CDATA[>=]]>   #{searchStartDate} AND SUBSTRING(RDATE,1,8) &gt;= #{searchEndDate}
+			AND SUBSTRING(RDATE,1,8) <![CDATA[>=]]>   #{searchStartDate} AND SUBSTRING(RDATE,1,8) <![CDATA[<=]]>  #{searchEndDate}
 		</if>
 		
 
@@ -71,7 +71,7 @@
 			 AND category = #{category}
 		</if>
 		<if test='searchStartDate != null &amp;&amp;  !searchStartDate.equals("")'>
-			AND SUBSTRING(RDATE,1,8) <![CDATA[>=]]>   #{searchStartDate} AND SUBSTRING(RDATE,1,8) &gt;= #{searchEndDate}
+			AND SUBSTRING(RDATE,1,8) <![CDATA[>=]]>   #{searchStartDate} AND SUBSTRING(RDATE,1,8) <![CDATA[<=]]>  #{searchEndDate}
 		</if>
 		
 	</select>
@@ -85,8 +85,8 @@
 	</delete>
 	
 	<insert id="insert" useGeneratedKeys="true"	keyProperty="id" parameterType="kr.co.th.dogCat.adopt.vo.AdoptVO">
-		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category,content,gender,rdate2)
-		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category},#{content},#{gender},#{rdate2});
+		INSERT INTO ADOPT(subject,originalFileName,rdate,writer,name,species,phone,category,content,gender)
+		values(#{subject},#{originalFileName},#{rdate},#{writer},#{name},#{species},#{phone},#{category},#{content},#{gender});
 	</insert>
 	
 	<update id="modify" parameterType="hashMap">
