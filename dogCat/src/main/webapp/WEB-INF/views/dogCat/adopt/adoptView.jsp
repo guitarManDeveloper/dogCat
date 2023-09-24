@@ -26,8 +26,18 @@
 </script>
 
 
+
+
+
 <body>
+
+
+
 <br/>
+
+
+
+
 <div class='container'>
 	<div class='container'>
 		<!-- 로그인 화면  -->
@@ -35,7 +45,13 @@
 	</div>
 	<br/>
 	<h2 class="text-center">상품 상세보기</h2>
-	<br/>
+	
+	<div style="margin:auto;text-align:center;">
+		<form style="display:inline-block;" method="get" action="./adoptList">
+			<button id='btn_modify' type="submit" class="btn btn-primary btn-sm" style="float: right;margin-left: 5px">찜</button>
+		</form>
+	</div>
+	
 	<table class="table table-bordered text-center" style="width: 800px; margin-left: auto; margin-right: auto;">
 		<colgroup>
 			<col width="180px">
@@ -75,15 +91,17 @@
             <td>
                 <img class="card-img-bottom d-block" src="/resources/userImageData/${adopt.originalFileName }" alt="Card image cap">
             </td>
+		</tr>
         </tr>
 	</table>
 	<div style="margin-left: 900px; margin-right: auto;">
+		<a href="./adoptList?page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-dark btn-sm" >채팅하기</a>
 		<a href="./adoptList?page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-secondary btn-sm" >목록</a>
 		<a href="./modifyAdopt?id=${adopt.id}&page=${adoptVO.page}&viewType=${adoptVO.viewType}" class="btn btn-primary btn-sm" >수정</a>
 		<a href="./deleteAdopt?id=${adopt.id}" onclick="return fn_deleteAt(this.href)" class="btn btn-danger btn-sm" >삭제</a>
 	</div>
-
 </div>
+
 
 </body>
 </html>
