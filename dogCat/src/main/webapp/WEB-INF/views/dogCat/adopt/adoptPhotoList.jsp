@@ -47,6 +47,13 @@
     <br/>
     <h2 class="text-center">상품 목록 게시판</h2>
     <br/>
+    
+    <form action="./adoptList" method="get">
+	    <input type="date" name="searchStartDate" value="${adoptVO.searchStartDate}" > ~ 
+	    <input type="date" name="searchEndDate" value="${adoptVO.searchEndDate}" >
+	    <input type="submit" value="Submit">
+    </form>
+    
     <c:set var="buttonType1" value="primary"/>
     <c:set var="buttonType2" value="primary"/>
     <c:if test="${adoptVO.viewType eq 'list'}">

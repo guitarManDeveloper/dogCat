@@ -24,20 +24,8 @@
     }
 	
 </script>
-
-
-
-
-
 <body>
-
-
-
 <br/>
-
-
-
-
 <div class='container'>
 	<div class='container'>
 		<!-- 로그인 화면  -->
@@ -92,6 +80,10 @@
                 <img class="card-img-bottom d-block" src="/resources/userImageData/${adopt.originalFileName }" alt="Card image cap">
             </td>
 		</tr>
+		
+		
+		
+		
         </tr>
 	</table>
 	<div style="margin-left: 900px; margin-right: auto;">
@@ -101,7 +93,5 @@
 		<a href="./deleteAdopt?id=${adopt.id}" onclick="return fn_deleteAt(this.href)" class="btn btn-danger btn-sm" >삭제</a>
 	</div>
 </div>
-
-
 </body>
 </html>

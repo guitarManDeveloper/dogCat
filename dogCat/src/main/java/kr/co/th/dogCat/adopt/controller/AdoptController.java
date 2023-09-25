@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.th.dogCat.adopt.service.AdoptService;
 import kr.co.th.dogCat.adopt.vo.AdoptVO;
+import kr.co.th.dogCat.login.vo.LoginVO;
 
 @Controller
 public class AdoptController {
@@ -27,7 +28,7 @@ public class AdoptController {
 	
 	//분양목록화면
 	@RequestMapping("/adoptList")
-	public String adoptList(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model) throws Exception {	
+	public String adoptList(@ModelAttribute("adoptVO") AdoptVO adoptVO, ModelMap model, HttpServletRequest request) throws Exception {	
 		
 		if(adoptVO.getViewType().equals("photo")){
 			adoptVO.setPageSize(8);
@@ -47,6 +48,10 @@ public class AdoptController {
 		model.addAttribute("totalCnt",totalCnt);
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("currentPage",adoptVO.getPage());
+		
+		//로그인정보가져오기
+		LoginVO loginVO = (LoginVO)request.getSession().getAttribute("loginVO");
+		model.addAttribute("loginVO", loginVO);
 		
 	    if(adoptVO.getViewType().equals("list")){
 	    	return "dogCat/adopt/adoptList";
