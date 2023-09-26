@@ -23,7 +23,7 @@
 				url: '/logout',
 				type:'POST',				
 				success:function(response){					
-					window.location.href = './selectItemList';
+					window.location.href = './adoptList';
 				},
 				error:function(){					
 				}			
